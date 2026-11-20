@@ -16,8 +16,8 @@ const defaultLightPalette: Record<
   | "neutral",
   RgbTuple
 > = {
-  headerBackground: [239, 246, 255],
-  accent: [59, 130, 246],
+  headerBackground: [240, 253, 250],
+  accent: [13, 148, 136],
   textPrimary: [30, 41, 59],
   textMuted: [100, 116, 139],
   boxBackground: [248, 250, 252],

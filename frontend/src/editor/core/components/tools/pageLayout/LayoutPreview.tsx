@@ -52,8 +52,8 @@ export default function LayoutPreview({
             height={box.height}
             rx={3}
             ry={3}
-            fill="#bfdbfe"
-            stroke={parameters.addBorder ? "#3b82f6" : "none"}
+            fill="#ccfbf1"
+            stroke={parameters.addBorder ? "#0d9488" : "none"}
             strokeWidth={2}
           />
           <text

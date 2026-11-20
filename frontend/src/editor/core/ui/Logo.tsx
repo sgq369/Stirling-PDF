@@ -6,7 +6,7 @@ import wordmarkDarkUrl from "@editor/assets/brand/branding-logo/wordmark-dark.sv
 import "@editor/components/shared/BrandMark.css";
 import "@editor/ui/Logo.css";
 
-/** iconOnly = mark; textOnly = "Stirling" wordmark; iconAndText = both. */
+/** iconOnly = mark; textOnly = "Qinlv PDF" wordmark; iconAndText = both. */
 export type LogoVariant = "iconOnly" | "iconAndText" | "textOnly";
 
 interface LogoProps {
@@ -38,7 +38,7 @@ export function Logo({
   gap = "0.5rem",
   className,
   style,
-  alt = "Stirling",
+  alt = "Qinlv PDF",
 }: LogoProps) {
   const showIcon = variant === "iconOnly" || variant === "iconAndText";
   const showText = variant === "textOnly" || variant === "iconAndText";

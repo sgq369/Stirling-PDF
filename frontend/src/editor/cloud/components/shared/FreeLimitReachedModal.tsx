@@ -33,8 +33,8 @@ export function FreeLimitReachedModal({ onClose }: FreeLimitReachedModalProps) {
   // force a style recalc.
   const gradientStops = useMemo<[string, string]>(
     () => [
-      readColor("--color-primary-500", "#3b82f6"),
-      readColor("--color-primary-800", "#1e40af"),
+      readColor("--color-primary-500", "#0d9488"),
+      readColor("--color-primary-800", "#115e59"),
     ],
     [],
   );

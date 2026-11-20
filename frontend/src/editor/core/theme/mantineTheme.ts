@@ -215,7 +215,7 @@ export const mantineTheme = createTheme({
   other: {
     crop: {
       overlayBorder: "var(--color-primary-500)",
-      overlayBackground: "rgba(59, 130, 246, 0.1)", // Blue with 10% opacity
+      overlayBackground: "rgba(13, 148, 136, 0.1)", // Teal with 10% opacity
       handleColor: "var(--color-primary-500)",
       handleBorder: "var(--c-surface)",
     },

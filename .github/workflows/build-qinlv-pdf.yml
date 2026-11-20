@@ -1,0 +1,76 @@
+# Qinlv PDF image: builds the fork's qinlv-3.2.2 branch into a linux/arm64
+# image and pushes it to GHCR. Same shape as upstream push-docker.yml's main
+# app step, trimmed to what this fork needs: arm64 only (the Oracle VPS is
+# ARM), no fat/ultra-lite variants, no signing, BUILD_PORTAL=false (the admin
+# portal is not part of this deployment), VERSION_TAG fixed to qinlv-3.2.2.
+name: Build Qinlv PDF image
+
+on:
+  push:
+    branches:
+      - qinlv-3.2.2
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      packages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Cache Gradle
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-qinlv-pdf-v1-${{ runner.os }}-${{ runner.arch }}-jdk-25-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties', 'gradle/libs.versions.toml', 'buildSrc/**', 'settings.gradle', 'build.gradle', 'app/**/build.gradle', 'gradle/**/*.gradle') }}
+
+      - name: Set up JDK 25
+        uses: ./.github/actions/java
+        with:
+          java-version: "25"
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Convert repository owner to lowercase
+        id: repoowner
+        run: echo "lowercase=$(echo ${{ github.repository_owner }} | awk '{print tolower($0)}')" >> $GITHUB_OUTPUT
+
+      - name: Build and push Qinlv PDF image (arm64)
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: .
+          file: ./docker/embedded/Dockerfile
+          push: true
+          cache-from: type=gha,scope=qinlv-pdf
+          cache-to: type=gha,mode=max,scope=qinlv-pdf
+          tags: ghcr.io/${{ steps.repoowner.outputs.lowercase }}/qinlv-pdf:qinlv-3.2.2
+          build-args: |
+            VERSION_TAG=qinlv-3.2.2
+            BUILD_PORTAL=false
+          platforms: linux/arm64
+          provenance: true
+          sbom: true

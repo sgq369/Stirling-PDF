@@ -85,19 +85,21 @@
   --_bd: var(--p-c-334155);
   --_tint: color-mix(in srgb, var(--p-c-94a3b8) 16%, transparent);
 }
-/* brand: Stirling red — a bespoke brand colour, not part of the token palette. */
+/* brand: Qinlv teal — a bespoke brand colour, not part of the token palette.
+   Solid is one step deeper than the brand token so the white label clears
+   4.5:1, matching how danger and success resolve the same problem. */
 .sui-acc-brand {
-  --_solid: var(--p-brand-red-650);
-  --_solid-hover: var(--p-brand-red-700);
+  --_solid: var(--p-teal-700);
+  --_solid-hover: var(--p-teal-800);
   --_on: #ffffff;
-  --_text: var(--p-brand-red-650);
-  --_bd: var(--p-brand-red-200);
-  --_tint: color-mix(in srgb, var(--p-brand-red-650) 9%, transparent);
+  --_text: var(--p-teal-700);
+  --_bd: var(--p-teal-200);
+  --_tint: color-mix(in srgb, var(--p-teal-700) 9%, transparent);
 }
 [data-theme="dark"] .sui-acc-brand {
-  --_text: var(--p-brand-red-300);
-  --_bd: var(--p-brand-red-900);
-  --_tint: color-mix(in srgb, var(--p-brand-red-300) 16%, transparent);
+  --_text: var(--p-teal-300);
+  --_bd: var(--p-teal-900);
+  --_tint: color-mix(in srgb, var(--p-teal-300) 16%, transparent);
 }
 /* ai: multi-hue gradient for AI features — no single-colour token. */
 .sui-acc-ai {

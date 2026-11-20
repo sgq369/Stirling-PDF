@@ -5,7 +5,7 @@
 :root,
 [data-theme="light"],
 html[data-app-theme="light"] {
-  --c-bg: var(--p-paper);
+  --c-bg: var(--p-mint-bg);
   --c-bg-raised: var(--p-white);
   --c-surface: var(--p-snow);
   --c-surface-raised: var(--p-white);
@@ -30,12 +30,12 @@ html[data-app-theme="light"] {
   --c-border-subtle: var(--p-gray-200);
   --c-border-strong: var(--p-gray-400);
 
-  --c-primary: var(--p-blue-500);
-  --c-primary-hover: var(--p-blue-600);
-  --c-primary-subtle: color-mix(in srgb, var(--p-blue-500) 10%, transparent);
+  --c-primary: var(--p-teal-600);
+  --c-primary-hover: var(--p-teal-700);
+  --c-primary-subtle: color-mix(in srgb, var(--p-teal-600) 10%, transparent);
   /* Accent used as TEXT (links, toggles): a deeper hue that clears 4.5:1 on
      light surfaces, where --c-primary itself does not. */
-  --c-accent-text: var(--p-blue-700);
+  --c-accent-text: var(--p-teal-700);
 
   --c-success: var(--p-green-600);
   --c-danger: var(--p-red-600);
@@ -49,18 +49,18 @@ html[data-app-theme="light"] {
   --c-danger-solid: var(--p-red-700);
   --c-warning-solid: var(--p-amber-700);
   --c-neutral-solid: var(--p-gray-600);
-  --c-accent-solid: var(--p-blue-600);
+  --c-accent-solid: var(--p-teal-600);
   /* Ink for surfaces that are white in both schemes — a rendered page, a
      signature sheet. Scheme-independent for the same reason the fills above
      are: the ground does not change, so the ink must not either. */
   --c-text-on-light: var(--p-ink);
-  --c-accent-on-light: var(--p-blue-700);
+  --c-accent-on-light: var(--p-teal-700);
   --c-document-bg: var(--p-white);
   /* Highlight/flash (search hits, compare jump-to) — same in both themes. */
   --c-highlight: var(--p-flash-yellow);
-  /* Stirling brand red (auth CTAs) — a fixed brand colour, same in both themes. */
-  --c-brand: var(--p-brand-red);
-  --c-brand-hover: var(--p-brand-red-600);
+  /* Qinlv brand teal (auth CTAs) — a fixed brand colour, same in both themes. */
+  --c-brand: var(--p-teal-600);
+  --c-brand-hover: var(--p-teal-700);
 
   --c-primary-tint: color-mix(in srgb, var(--c-primary) 14%, var(--c-surface));
   --c-primary-border: color-mix(
@@ -85,8 +85,8 @@ html[data-app-theme="light"] {
      marks, vendor colours, categorical avatar dots, static illustrations,
      and the multi-hue gradients on feature/upgrade/onboarding surfaces.
      Named here so components reference a --c-* token, never a raw --p-*. */
-  --c-brand-mark: var(--p-brand-red-650);
-  --c-brand-mark-soft: var(--p-brand-red-400); /* Stirling logo mark fill */
+  --c-brand-mark: var(--p-teal-650);
+  --c-brand-mark-soft: var(--p-teal-400); /* Qinlv logo mark fill */
   --c-accent-stripe: var(--p-periwinkle-500); /* Stripe "connect" CTA */
 
   /* Feature-accent hues (fixed) used as stops in multi-hue gradients. */
@@ -129,17 +129,17 @@ html[data-app-theme="light"] {
   --c-illustration-line-strong: var(--p-gray-300);
 
   /* Viewer active file-tab tint base. */
-  --c-tab-active-tint: var(--p-blue-200);
+  --c-tab-active-tint: var(--p-teal-200);
 
   /* Themed: file-card resting/unselected header (branded navy). */
-  --c-file-header-resting: var(--p-navy-500);
+  --c-file-header-resting: var(--p-teal-700);
 
   /* Themed: onboarding hero panel gradient + inset tile. */
   --c-onboarding-hero: linear-gradient(
     155deg,
-    var(--p-tint-blue) 0%,
-    var(--p-tint-violet) 55%,
-    var(--p-tint-pink) 100%
+    var(--p-tint-teal) 0%,
+    var(--p-tint-teal-soft) 55%,
+    var(--p-white) 100%
   );
   --c-onboarding-hero-tile: var(--p-white);
 }
@@ -195,7 +195,7 @@ html[data-app-theme="midnight"] {
 
 /* ── Base accent — fixed default (blue buttons); [data-accent="default"] blocks at the end keep surfaces neutral. LIGHT base here, DARK base next. ── */
 html[data-app-theme="custom"] {
-  --c-primary: var(--p-blue-500);
+  --c-primary: var(--p-teal-600);
   /* Also the accent text colour (--_text), so 80% keeps 4.5:1 on the canvas. */
   --c-primary-hover: color-mix(in srgb, var(--c-primary) 80%, var(--p-black));
   --c-primary-subtle: color-mix(in srgb, var(--c-primary) 14%, transparent);
@@ -204,7 +204,7 @@ html[data-app-theme="custom"] {
   /* Accent used as TEXT: --c-primary and its 80% hover both land under
      4.5:1 on the accent-tinted surfaces they appear on (chips, links,
      outline buttons), so accent copy takes a deeper step of the hue. */
-  --c-accent-text: var(--p-blue-700);
+  --c-accent-text: var(--p-teal-700);
 
   /* Primary-tinted surfaces (light base). Neutralised by the default override. */
   --c-bg: color-mix(in srgb, var(--c-primary) 7%, var(--p-paper));
@@ -409,7 +409,7 @@ html[data-app-theme="custom"][data-mantine-color-scheme="dark"] {
 
 /* ── DEFAULT (no tint) — surfaces opt out of the accent tint (neutral white/grey light, zinc dark); --c-primary stays for buttons. Extra [data-accent="default"] beats the tinted blocks. ── */
 html[data-app-theme="custom"][data-accent="default"] {
-  --c-bg: var(--p-paper);
+  --c-bg: var(--p-mint-bg);
   --c-bg-raised: var(--p-white);
   --c-surface: var(--p-snow);
   --c-surface-raised: var(--p-white);
@@ -417,8 +417,12 @@ html[data-app-theme="custom"][data-accent="default"] {
   --c-input-bg: var(--p-white);
   --c-hover: var(--p-gray-50);
   --c-active: var(--p-gray-100);
-  --c-border: var(--p-c-f0f0f0);
-  --c-border-subtle: var(--p-gray-200);
+  --c-border: color-mix(in srgb, var(--c-primary) 14%, var(--p-c-f0f0f0));
+  --c-border-subtle: color-mix(
+    in srgb,
+    var(--c-primary) 10%,
+    var(--p-gray-200)
+  );
 }
 
 html[data-app-theme="custom"][data-accent="default"][data-mantine-color-scheme="dark"] {

@@ -8,12 +8,10 @@ interface BrandMarkProps {
 }
 
 /**
- * The Stirling logo mark, rendered inline (not as an <img>) so its paths can
- * morph. At rest it is the two-tone red brand mark; when an ancestor marked
- * `[data-brandmark-morph]` is hovered / focused / open (`.is-open`), the two
- * parallelograms slide into a smaller downward chevron in the primary text
- * colour — a self-explaining "this opens a menu" affordance. See
- * BrandMark.css for the morph geometry.
+ * The Qinlv logo mark, rendered inline (not as an <img>) so its two paths can
+ * take the brand fills from CSS. At rest it is the two-tone teal 钦 glyph:
+ * left radical (钅) in the soft mark colour, right part (欠) in the deep one.
+ * See BrandMark.css for the fill mapping.
  */
 export function BrandMark({ height = "1.6rem", className }: BrandMarkProps) {
   return (
@@ -21,7 +19,7 @@ export function BrandMark({ height = "1.6rem", className }: BrandMarkProps) {
       name="stirling-mark"
       size={height}
       className={`sui-brandmark${className ? ` ${className}` : ""}`}
-      title="Stirling"
+      title="Qinlv PDF"
     />
   );
 }

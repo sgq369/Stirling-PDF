@@ -93,7 +93,19 @@
   --p-pink-500: #ec4899;
   --p-purple-500: #6c5ce7;
   --p-periwinkle-500: #635bff;
-  --p-teal-700: #0f7b6c;
+  /* Qinlv teal ramp (brand): values match the main site's primary scale. */
+  --p-teal-200: #99f6e4;
+  --p-teal-300: #5eead4;
+  --p-teal-400: #2dd4bf;
+  --p-teal-600: #0d9488;
+  --p-teal-650: #0d9488;
+  --p-teal-700: #0f766e;
+  --p-teal-800: #115e59;
+  --p-teal-900: #134e4a;
+  /* Qinlv canvas + hero tints. */
+  --p-mint-bg: #f4f8f7;
+  --p-tint-teal: #ccfbf1;
+  --p-tint-teal-soft: #f0fdfa;
   --p-gray-450: #868e96;
   --p-gray-b0: #b0b0b0;
   --p-gray-mid: #808080;
